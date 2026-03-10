@@ -1,0 +1,23 @@
+package com.order.feigncontroller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.order.feignclint.ProductClient;
+
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+
+    @Autowired
+    private ProductClient productClient;
+
+    @PostMapping("/place")
+    public String placeOrder() {
+
+        String product = productClient.getProduct(1);
+
+        return "Order Placed -> " + product;
+    }
+}

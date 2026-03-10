@@ -1,0 +1,38 @@
+package com.products.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.HttpStatus;          // ✅ Correct Import
+import org.springframework.http.ResponseEntity;     // ✅ Correct Type
+import org.springframework.web.bind.annotation.*;
+
+import com.products.dto.ProducDataPojo;
+import com.products.model.ProductEntity;
+import com.products.service.ProductService;
+
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping("/createproduct")
+    public ResponseEntity<ProductEntity> productStore(
+            @RequestBody ProducDataPojo productDataPojo) {
+
+        ProductEntity savedProduct =productService.itemStore(productDataPojo);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)  // ✅ Spring HttpStatus
+                .body(savedProduct);
+    }
+    
+    
+    
+    
+    @GetMapping("/{id}")
+    public String getProduct(@PathVariable int id) {
+        return "ProductSSSSSSSSSSSSSSSSSSSSS " + id;
+    }
+}

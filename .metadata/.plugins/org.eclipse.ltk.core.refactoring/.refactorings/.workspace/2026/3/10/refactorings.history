@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;oder-service-feign&apos; to &apos;order-service-feign&apos;" description="Rename resource &apos;oder-service-feign&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/oder-service-feign" name="order-service-feign" stamp="1772389888619" updateReferences="true"/>
+</session>

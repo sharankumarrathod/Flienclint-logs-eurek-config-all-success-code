@@ -1,0 +1,26 @@
+package com.order.feigncontroller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.order.dto.ProductDto;
+import com.order.feignclint.ProductClient;
+
+@RestController
+@RequestMapping("/orders")
+public class OrderController {
+
+    @Autowired
+    private ProductClient productClient;
+
+    @GetMapping("/getOrder")
+    public String placeOrder() {
+
+        ProductDto product = productClient.getProduct(1);
+
+        return "Order Placed -> Product Name: " + product.getName() +
+               " Price: " + product.getPrice();
+    }
+}
